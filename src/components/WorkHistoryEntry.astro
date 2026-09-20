@@ -1,0 +1,26 @@
+---
+interface Props {
+	startYear: string;
+	endYear: string;
+	title: string;
+	company: string;
+	description: string;
+	technologies: string[];
+}
+
+const { startYear, endYear, title, company, description, technologies } = Astro.props;
+---
+
+<li class="role-entry">
+	<div class="role-period">{startYear} <span>--</span> {endYear}</div>
+	<div class="role-main">
+		<div class="role-title-row">
+			<h3>{title}</h3>
+			<p class="company">{company}</p>
+		</div>
+		<p class="role-description">{description}</p>
+		<ul class="technology-list" aria-label="Technologies used">
+			{technologies.map((technology) => <li>{technology}</li>)}
+		</ul>
+	</div>
+</li>
