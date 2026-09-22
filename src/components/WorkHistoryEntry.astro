@@ -4,11 +4,12 @@ interface Props {
 	endYear: string;
 	title: string;
 	company: string;
-	description: string;
+	overview: string;
+	highlights: string[];
 	technologies: string[];
 }
 
-const { startYear, endYear, title, company, description, technologies } = Astro.props;
+const { startYear, endYear, title, company, overview, highlights, technologies } = Astro.props;
 ---
 
 <li class="role-entry">
@@ -18,7 +19,19 @@ const { startYear, endYear, title, company, description, technologies } = Astro.
 			<h3>{title}</h3>
 			<p class="company">{company}</p>
 		</div>
-		<p class="role-description">{description}</p>
+		<p class="role-description">{overview}</p>
+		{highlights.length > 0 && (
+			<details class="role-highlights">
+				<summary>
+					<span class="read-more-label">Read more</span>
+					<span class="read-less-label">Read less</span>
+					<span class="disclosure-indicator" aria-hidden="true"></span>
+				</summary>
+				<ul class="highlights-list" aria-label="Role highlights">
+					{highlights.map((highlight) => <li>{highlight}</li>)}
+				</ul>
+			</details>
+		)}
 		<ul class="technology-list" aria-label="Technologies used">
 			{technologies.map((technology) => <li>{technology}</li>)}
 		</ul>

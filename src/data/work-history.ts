@@ -1,30 +1,121 @@
-// src/data/work-history.ts
-export interface WorkHistoryEntry {
-    startYear: string;
-    endYear: string;
-    title: string;
-    company: string;
-    description: string;
-    technologies: string[];
-}
+import type { WorkHistoryEntry } from '../models/work-history-entry';
 
 export const workHistory: WorkHistoryEntry[] = [
 	{
-		startYear: '2024',
-		endYear: 'NOW',
+		startYear: 'JAN 2026',
+		endYear: 'PRESENT',
 		title: 'Senior Software Engineer',
 		company: 'Teradyne',
-		description:
-			'Developing low-level runtime software for semiconductor test systems, where reliable hardware control and clear diagnostic paths matter.',
-		technologies: ['.NET', 'C#', 'PostgreSQL', 'RabbitMQ'],
+		overview: 
+			'Senior Software Engineer working on software for automated semiconductor test equipment, with responsibilities spanning test execution workflows, hardware/software integration, build systems, engineering standards, and modernization of a large multi-team codebase.',
+		highlights: [
+			'Develop and maintain software that coordinates automated test equipment workflows for semiconductor validation and manufacturing environments.',
+			'Identified architectural, dependency, build, and deployment bottlenecks across a large C#/.NET codebase and defined a phased modernization strategy focused on clearer component boundaries, dependency direction, build reliability, and maintainability.',
+			'Reduced full-repository build times by more than 75%, from approximately 20 minutes to under 5 minutes, by restoring a cohesive MSBuild dependency graph and enabling effective incremental builds; also eliminated reliance on pre-generated shared assemblies for normal solution-level development.',
+			'Designed test automation strategy across C# and C++ codebases, including unit and integration test categorization, xUnit, googletest/gMock, mocking and simulator usage, and CI quality-gating recommendations.',
+			'Developed engineering guidance for C#/.NET and C++ covering project structure, dependency management, build practices, testing, dependency injection, and maintainable service architecture.',
+			'Defined modernization approaches for repository/component structure, package and dependency management, CI/CD responsibilities, and legacy build and deployment workflows.',
+			'Rolled out foundational build-system changes across active development without build outages or significant disruption, with follow-up focused primarily on developer guidance and adoption.',
+			'Support engineering hiring through technical interviews evaluating software design, architecture, problem-solving, and overall role fit.',
+		],
+		technologies: ['.NET', 'C#', 'C++', 'PostgreSQL', 'RabbitMQ', 'Unit/Integration Testing', 'xUnit', 'googletest/gMock', 'Git', 'GitLab'],
 	},
 	{
-		startYear: '2022',
-		endYear: '2024',
+		startYear: 'JUL 2024',
+		endYear: 'DEC 2025',
 		title: 'Senior Engineer',
 		company: 'Geico',
-		description:
-			'Designed tools for a distributed platform at scale, pairing pragmatic product delivery with measured modernization of a mature codebase.',
-		technologies: ['React', 'TypeScript', '.NET Core', 'Azure'],
+		overview:
+			'Senior Engineer supporting a large-scale insurance technology platform, with work spanning low-code workflow tooling, backend API services, production system reliability, legacy modernization, and security improvements in a distributed cloud environment.',
+		highlights: [
+			'Built features for a low-code workflow tool designed to let sales and product teams modify complex customer question flows without requiring direct developer intervention.',
+			'Supported backend API services for a customer-facing insurance platform serving approximately 16–18 million users per month.',
+			'Helped transition team responsibilities from new product development to production platform support, resolving backlog issues and improving the maintainability of existing services.',
+			'Refactored legacy code toward modern software patterns to improve testability, readability, and long-term reliability.',
+			'Addressed security vulnerabilities and applied backend service best practices to improve platform security posture.',
+			'Worked across product, engineering, and support stakeholders to sustain high-availability services while improving operational workflows and engineering execution.',
+		],
+		technologies: ['.NET', 'C#', 'TypeScript', 'React', 'NoSQL', 'Git', 'Azure'],
 	},
+	{
+		startYear: 'NOV 2022',
+		endYear: 'NOV 2023',
+		title: 'Senior Software Engineer',
+		company: 'Bose',
+		overview: 'Senior Software Engineer developing audio tuning tools for a large consumer audio platform, supporting engineering workflows for audio analysis, validation, and product tuning.',
+		highlights: [
+			'Built Python-based tools used by audio engineers to tune, analyze, and validate product audio performance.',
+			'Designed an integration approach for incorporating external code libraries into internal tooling, improving modularity, interoperability, and development efficiency.',
+			'Used NumPy and SciPy for audio signal processing tasks, including filtering, Fourier transforms, spectral analysis, and feature extraction.',
+			'Collaborated with audio, DSP, hardware, and product teams to translate engineering needs into usable internal tools.',
+			'Improved project architecture and tooling reliability, contributing to better performance, stability, scalability, and maintainability.',
+			'Contributed to hardware- and DSP-adjacent efforts, building experience across software, audio systems, and product engineering.',
+		],
+		technologies: ['Python', 'C#', 'C', 'C++','NumPy', 'SciPy', 'Pytest', 'Git', 'GitHub'],
+	},
+	{
+		startYear: 'MAR 2022',
+		endYear: 'NOV 2022',
+		title: 'Software Engineer',
+		company: 'Southern Automation and Controls',
+		overview: 'Software Engineer developing software for industrial automation systems, with work spanning PLC-connected desktop applications, Django-based remote monitoring tools, reporting workflows, and customer-facing alerting systems.',
+		highlights: [
+			'Built and maintained .NET/WPF applications used to interface with PLC-driven automation systems across industrial, maintenance, and chemical storage environments.',
+			'Developed Django web applications that gave customers off-site visibility into PLC activity, system status, errors, and operational data.',
+			'Integrated vendor libraries and hardware communication interfaces to connect application software with industrial control systems.',
+			'Implemented reporting, email alerts, and SMS notifications to support faster response to equipment issues and operational events.',
+			'Deployed and maintained Linux-hosted applications, including server configuration, deployment automation, monitoring, and security hardening.',
+			'Helped modernize customer installations by extending local automation systems with remote monitoring and limited remote-control capabilities.',
+		],
+		technologies: ['Python', 'C#', 'Django', 'PostgreSQL', 'Linux', 'Git', 'GitHub'],
+	},
+	{
+		startYear: 'MAR 2018',
+		endYear: 'JAN 2022',
+		title: 'Owner/Software Developer',
+		company: 'C2 Solutions, LLC',
+		overview: 'Independent Software Developer delivering custom web applications, backend APIs, database-backed systems, and client-specific business software.',
+		highlights: [
+			'Worked directly with clients to define requirements, scope projects, and deliver practical software solutions.',
+			'Built RESTful backend APIs using ASP.NET Core, Django, SQL Server, and PostgreSQL.',
+			'Developed full-stack web applications with Django backends and frontend interfaces using React and Svelte.',
+			'Designed database schemas, application workflows, and integrations to support client-specific operational processes.',
+			'Owned end-to-end delivery across architecture, implementation, testing, deployment, and ongoing support.',
+			'Applied performance, security, maintainability, and usability considerations across small-scale production systems.',
+		],
+		technologies: ['Python', 'C#', 'TypeScript', 'Django', 'SQL Server', 'PostgreSQL', 'React', 'Svelte', 'Git', 'GitHub'],
+	},
+	{
+		startYear: 'OCT 2014',
+		endYear: 'NOV 2018',
+		title: 'Software Developer/IT Director',
+		company: 'Tupelo Furniture Market',
+		overview: 'Software Developer building custom business applications for property management, tenant administration, convention operations, financial tracking, and event floor-plan management; IT Director overseeing infrastructure modernization, server administration, workstation management, and facility network improvements while supporting internal business operations.',
+		highlights: [
+			'Developed rental property and tenant management software using C#/.NET and MySQL to support internal business workflows.',
+			'Built convention management software used to track vendor attendance, manage financial information, and coordinate event operations.',
+			'Implemented interactive floor-plan functionality to support vendor booth layout planning and convention space management.',
+			'Designed database-backed application workflows for operational tracking, reporting, and business process automation.',
+			'Worked directly with business stakeholders to translate operational needs into maintainable internal software tools.',
+			'Managed IT systems, infrastructure planning, vendor coordination, and day-to-day technical support for business operations.',
+			'Improved infrastructure reliability and cost efficiency through server, networking, and platform modernization efforts.',
+		],
+		technologies: ['C#', '.NET Framework', 'MySQL', 'Linux'],
+	},
+	{
+		startYear: 'APR 2012',
+		endYear: 'OCT 2014',
+		title: 'Programmer/IT Manager',
+		company: 'Tupelo Manufacturing Company',
+		overview: 'Software Developer working on industrial software systems, including product and inventory applications, machine-control interfaces, legacy C/C++ maintenance, C# application development, and company web systems.',
+		highlights: [
+			'Maintained and improved product and inventory control software used to support internal manufacturing and operational workflows.',
+			'Developed custom C# interfaces for industrial machines, helping modernize operator workflows and improve usability.',
+			'Converted existing machine-control interfaces from C/C++ to C#, improving maintainability and aligning new development with the company’s preferred technology stack.',
+			'Supported legacy C/C++ application software, including maintenance, debugging, and incremental improvements.',
+			'Designed and implemented the company website using HTML, CSS, JavaScript, PHP, and MySQL.',
+			'Worked across application software, industrial machine integration, database-backed systems, and web development in a hands-on manufacturing environment.',
+		],
+		technologies: ['C', 'C++', 'C#', 'PHP', '.NET Framework', 'MySQL', 'JavaScript'],
+	}
 ];
