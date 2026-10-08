@@ -1,0 +1,79 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import '../../styles/home.css';
+import '../../styles/project.css';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { description, links, technologies, title, year } = project.data;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title} | Cory Coward</title>
+	</head>
+	<body id="top">
+		<div class="site-shell">
+			<header class="site-header">
+				<a class="wordmark" href="/" aria-label="Cory Coward home">
+					<span class="wordmark-mark">CC</span>
+					<span>CORYCOWARD.COM</span>
+				</a>
+				<nav aria-label="Primary navigation">
+					<a href="/#experience">Experience</a>
+					<a class="active" href="/#projects">Projects</a>
+				</nav>
+			</header>
+
+			<main class="project-page">
+				<a class="back-link" href="/#projects"><span aria-hidden="true">&larr;</span> All projects</a>
+				<section class="project-hero" aria-labelledby="project-title">
+					<p class="eyebrow"><span></span> PROJECT / {year}</p>
+					<h1 id="project-title">{title}</h1>
+					<p class="project-lede">{description}</p>
+					<div class="project-meta">
+						<ul class="technology-list" aria-label={`${title} technologies`}>
+							{technologies.map((technology) => <li>{technology}</li>)}
+						</ul>
+						<div class="project-actions">
+							{links.repository && <a href={links.repository} target="_blank" rel="noreferrer">Repository <span aria-hidden="true">&nearr;</span></a>}
+							{links.demo && <a href={links.demo} target="_blank" rel="noreferrer">Live demo <span aria-hidden="true">&nearr;</span></a>}
+						</div>
+					</div>
+				</section>
+
+				<article class="project-content">
+					<Content />
+				</article>
+			</main>
+
+			<footer>
+				<p>© 2026 CORY COWARD</p>
+				<p>BOSTON, MA <span>///</span> AVAILABLE FOR INTERESTING PROBLEMS</p>
+			</footer>
+		</div>
+		<a class="back-to-top" href="#top" aria-label="Back to top">
+			<span aria-hidden="true">&uarr;</span>
+			<span>Back to top</span>
+		</a>
+	</body>
+</html>

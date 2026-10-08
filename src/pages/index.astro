@@ -1,73 +1,130 @@
 ---
-import WorkHistoryEntry from '../components/WorkHistoryEntry.astro';
-import '../styles/home.css';
-import { workHistory } from '../data/work-history';
+import { getCollection } from "astro:content";
+import ProjectCard from "../components/ProjectCard.astro";
+import WorkHistoryEntry from "../components/WorkHistoryEntry.astro";
+import "../styles/home.css";
+import { workHistory } from "../content/work/work-history";
+
+const projects = (await getCollection("projects")).sort(
+    (first, second) => first.data.sortOrder - second.data.sortOrder,
+);
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<meta
-			name="description"
-			content="Cory Coward, backend and embedded software engineer."
-		/>
-		<title>Cory Coward | Software Engineer</title>
-	</head>
-	<body id="top">
-		<div class="site-shell">
-			<header class="site-header">
-				<a class="wordmark" href="/" aria-label="Cory Coward home">
-					<span class="wordmark-mark">CC</span>
-					<span>CORYCOWARD.COM</span>
-				</a>
-				<nav aria-label="Primary navigation">
-					<a class="active" href="#experience">Experience</a>
-				</nav>
-			</header>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <meta
+            name="description"
+            content="Cory Coward, backend and embedded software engineer."
+        />
+        <title>Cory Coward | Software Engineer</title>
+    </head>
+    <body id="top">
+        <div class="site-shell">
+            <header class="site-header">
+                <a class="wordmark" href="/" aria-label="Cory Coward home">
+                    <span class="wordmark-mark">CC</span>
+                    <span>CORYCOWARD.COM</span>
+                </a>
+                <nav aria-label="Primary navigation">
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                </nav>
+            </header>
 
-			<main>
-				<section class="intro" aria-labelledby="page-title">
-					<div class="intro-copy">
-						<p class="eyebrow"><span></span> SOFTWARE / HARDWARE</p>
-						<h1 id="page-title">Cory<br />Coward</h1>
-						<p class="role">Backend &amp; embedded software engineer</p>
-						<p class="summary">
-							Building dependable systems where code meets the physical world.
-						</p>
-					</div>
-					<div class="signal-field" aria-hidden="true">
-						<div class="signal-image"></div>
-						<div class="signal-label">SYSTEMS ONLINE<br /><span>EST. 2012</span></div>
-						<div class="signal-line line-one"></div>
-						<div class="signal-line line-two"></div>
-					</div>
-				</section>
+            <main>
+                <section class="intro" aria-labelledby="page-title">
+                    <div class="intro-copy">
+                        <p class="eyebrow">
+                            <span></span> SOFTWARE / HARDWARE
+                        </p>
+                        <h1 id="page-title">
+                            Cory
+                            <br />
+                            Coward
+                        </h1>
+                        <p class="role">
+                            Backend &amp; embedded software engineer
+                        </p>
+                        <p class="summary">
+                            Building dependable systems where code meets the
+                            physical world.
+                        </p>
+                    </div>
+                    <div class="signal-field" aria-hidden="true">
+                        <div class="signal-image"></div>
+                        <div class="signal-label">
+                            SYSTEMS ONLINE
+                            <br />
+                            <span>EST. 2012</span>
+                        </div>
+                        <div class="signal-line line-one"></div>
+                        <div class="signal-line line-two"></div>
+                    </div>
+                </section>
 
-				<section class="experience" id="experience" aria-labelledby="experience-title">
-					<div class="section-heading">
-						<p class="eyebrow"><span></span> SELECTED EXPERIENCE</p>
-						<h2 id="experience-title">Work history</h2>
-						<p>Systems built for people, production, and the less forgiving edge cases.</p>
-					</div>
+                <section
+                    class="experience"
+                    id="experience"
+                    aria-labelledby="experience-title"
+                >
+                    <div class="section-heading">
+                        <p class="eyebrow">
+                            <span></span> SELECTED EXPERIENCE
+                        </p>
+                        <h2 id="experience-title">Work history</h2>
+                        <p>
+                            Systems built for people, production, and the less
+                            forgiving edge cases.
+                        </p>
+                    </div>
 
-					<ol class="timeline">
-						{workHistory.map((entry) => <WorkHistoryEntry {...entry} />)}
-					</ol>
-				</section>
-			</main>
+                    <ol class="timeline">
+                        {workHistory.map((entry) => (
+                            <WorkHistoryEntry {...entry} />
+                        ))}
+                    </ol>
+                </section>
 
-			<footer>
-				<p>© 2026 CORY COWARD</p>
-				<p>BOSTON, MA <span>///</span> AVAILABLE FOR INTERESTING PROBLEMS</p>
-			</footer>
-		</div>
-		<a class="back-to-top" href="#top" aria-label="Back to top">
-			<span aria-hidden="true">&uarr;</span>
-			<span>Back to top</span>
-		</a>
-	</body>
+                <section
+                    class="projects"
+                    id="projects"
+                    aria-labelledby="projects-title"
+                >
+                    <div class="section-heading">
+                        <p class="eyebrow">
+                            <span></span> SELECTED WORK
+                        </p>
+                        <h2 id="projects-title">Projects</h2>
+                        <p>
+                            Experiments, useful tools, and systems built outside
+                            the day job.
+                        </p>
+                    </div>
+
+                    <div class="project-list">
+                        {projects.map((project) => (
+                            <ProjectCard project={project} />
+                        ))}
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <p>© 2026 CORY COWARD</p>
+                <p>
+                    BOSTON, MA <span>///</span> AVAILABLE FOR INTERESTING
+                    PROBLEMS
+                </p>
+            </footer>
+        </div>
+        <a class="back-to-top" href="#top" aria-label="Back to top">
+            <span aria-hidden="true">&uarr;</span>
+            <span>Back to top</span>
+        </a>
+    </body>
 </html>
