@@ -33,6 +33,7 @@ const projects = (await getCollection("projects")).sort(
                 <nav aria-label="Primary navigation">
                     <a href="#experience">Experience</a>
                     <a href="#projects">Projects</a>
+                    <a href="#about">About</a>
                 </nav>
             </header>
 
@@ -110,6 +111,48 @@ const projects = (await getCollection("projects")).sort(
                         {projects.map((project) => (
                             <ProjectCard project={project} />
                         ))}
+                    </div>
+                </section>
+
+                <section
+                    class="about"
+                    id="about"
+                    aria-labelledby="about-title"
+                >
+                    <div class="section-heading">
+                        <p class="eyebrow"><span></span> ABOUT ME</p>
+                        <h2 id="about-title">Making things work.</h2>
+                        <p>
+                            Thoughtful systems work, a healthy respect for
+                            constraints, and an enduring interest in how things
+                            are made.
+                        </p>
+                    </div>
+
+                    <div class="about-copy">
+                        <div class="about-primary">
+                            <p>
+                                I am passionate about making a difference by
+                                building and fixing things. My specialty is
+                                backend and embedded software engineering, with
+                                experience that also reaches into disciplines
+                                such as DSP and antenna design.
+                            </p>
+                            <p>
+                                I most enjoy the space where software meets
+                                hardware: turning imperfect requirements into
+                                optimized, dependable systems that do their job
+                                quietly and well.
+                            </p>
+                        </div>
+                        <aside class="about-notes" aria-label="Outside work">
+                            <p class="eyebrow"><span></span> OFF THE CLOCK</p>
+                            <p>
+                                When I am not at a keyboard or a breadboard,
+                                you will usually find me playing piano, reading,
+                                or watching <em>Seinfeld</em> for the 87th time.
+                            </p>
+                        </aside>
                     </div>
                 </section>
             </main>
