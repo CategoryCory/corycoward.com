@@ -1,4 +1,4 @@
-import type { WorkHistoryEntry } from '../models/work-history-entry';
+import type { WorkHistoryEntry } from '../../models/work-history-entry';
 
 export const workHistory: WorkHistoryEntry[] = [
 	{
