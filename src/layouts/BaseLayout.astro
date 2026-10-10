@@ -1,0 +1,59 @@
+---
+import "../styles/home.css";
+
+interface Props {
+    title: string;
+    description: string;
+    activeNavigation?: "projects";
+}
+
+const { activeNavigation, description, title } = Astro.props;
+const isDetailPage = Boolean(activeNavigation);
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="description" content={description} />
+        <title>{title}</title>
+    </head>
+    <body id="top">
+        <div class="site-shell">
+            <header class="site-header">
+                <a class="wordmark" href="/" aria-label="Cory Coward home">
+                    <span class="wordmark-mark">CC</span>
+                    <span>CORYCOWARD.COM</span>
+                </a>
+                <nav aria-label="Primary navigation">
+                    <a href={isDetailPage ? "/#experience" : "#experience"}>Experience</a>
+                    <a
+                        class:list={{ active: activeNavigation === "projects" }}
+                        href={isDetailPage ? "/#projects" : "#projects"}
+                    >
+                        Projects
+                    </a>
+                    <a href={isDetailPage ? "/#about" : "#about"}>About</a>
+                </nav>
+            </header>
+
+            <slot />
+
+            <footer>
+                <p>&copy; 2026 CORY COWARD</p>
+                <p>
+                    BOSTON, MA <span>///</span> AVAILABLE FOR INTERESTING PROBLEMS
+                </p>
+            </footer>
+        </div>
+        <div role="navigation" aria-label="Utility navigation">
+            <a class="back-to-top" href="#top" aria-label="Back to top">
+                <span aria-hidden="true">&uarr;</span>
+                <span>Back to top</span>
+            </a>
+        </div>
+    </body>
+</html>

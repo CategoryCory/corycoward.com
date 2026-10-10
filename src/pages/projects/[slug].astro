@@ -1,6 +1,6 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
-import '../../styles/home.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/project.css';
 
 export async function getStaticPaths() {
@@ -21,30 +21,8 @@ const { Content } = await render(project);
 const { description, links, technologies, title, year } = project.data;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<title>{title} | Cory Coward</title>
-	</head>
-	<body id="top">
-		<div class="site-shell">
-			<header class="site-header">
-				<a class="wordmark" href="/" aria-label="Cory Coward home">
-					<span class="wordmark-mark">CC</span>
-					<span>CORYCOWARD.COM</span>
-				</a>
-				<nav aria-label="Primary navigation">
-					<a href="/#experience">Experience</a>
-					<a class="active" href="/#projects">Projects</a>
-				</nav>
-			</header>
-
-			<main class="project-page">
+<BaseLayout title={`${title} | Cory Coward`} description={description} activeNavigation="projects">
+		<main class="project-page">
 				<a class="back-link" href="/#projects"><span aria-hidden="true">&larr;</span> All projects</a>
 				<section class="project-hero" aria-labelledby="project-title">
 					<p class="eyebrow"><span></span> PROJECT / {year}</p>
@@ -65,17 +43,4 @@ const { description, links, technologies, title, year } = project.data;
 					<Content />
 				</article>
 			</main>
-
-			<footer>
-				<p>© 2026 CORY COWARD</p>
-				<p>BOSTON, MA <span>///</span> AVAILABLE FOR INTERESTING PROBLEMS</p>
-			</footer>
-		</div>
-		<div role="navigation" aria-label="Utility navigation">
-			<a class="back-to-top" href="#top" aria-label="Back to top">
-				<span aria-hidden="true">&uarr;</span>
-				<span>Back to top</span>
-			</a>
-		</div>
-	</body>
-</html>
+</BaseLayout>
